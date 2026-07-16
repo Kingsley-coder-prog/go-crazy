@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+
+	"example.com/bank/fileops"
 )
 
 const accountBalanceFile = "balance.txt"
 
 func main() {
-	var accountBalance, err = getFloatFromFile(accountBalanceFile)
+	var accountBalance, err = fileops.GetFloatFromFile(accountBalanceFile)
 
 	if err != nil {
 		fmt.Println("ERROR")
@@ -41,7 +43,7 @@ func main() {
 
 			accountBalance += depositAmount // accountBalance = accountBalance + depositAmount
 			fmt.Println("Balance updated! New amount: $", accountBalance)
-			writeFloatToFile(accountBalance, accountBalanceFile)
+			fileops.WriteFloatToFile(accountBalance, accountBalanceFile)
 		case 3:
 			fmt.Print("Your withdraw: $")
 			var withdrawAmount float64
@@ -59,7 +61,7 @@ func main() {
 
 			accountBalance -= withdrawAmount // accountBalance = accountBalance - withdrawAmount
 			fmt.Println("Balance updated! New amount: $", accountBalance)
-			writeFloatToFile(accountBalance, accountBalanceFile)
+			fileops.WriteFloatToFile(accountBalance, accountBalanceFile)
 		default:
 			fmt.Println("Goodbye!")
 			fmt.Println("Thank you for using Go Bank!")
