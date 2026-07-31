@@ -10,10 +10,10 @@ func main() {
 
 	fmt.Println("Age: ", *agePointer) // prints the value of age variable
 
-	// adultYears := getAdultYears(age)
-	// fmt.Println("Adult years: ", adultYears)
+	adultYears := getAdultYears(agePointer) // passing pointer to function
+	fmt.Println("Adult years: ", adultYears)
 }
 
-func getAdultYears(age int) int {
-	return age - 18
+func getAdultYears(age *int) int {
+	return *age - 18
 }
